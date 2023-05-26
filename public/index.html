@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePot</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Oswald&family=Raleway:wght@600&family=Source+Sans+Pro&family=Yeseva+One&display=swap" rel="stylesheet"></head>
+<body>
+    <h1>OnePot</h1>
+
+    <!--making a place to hold the recipe cards-->
+    <div id="recipe-cards-container"></div>
+
+    <!--making a place to hold the details that goes into the cards-->
+    <div id="recipe-details-container">
+        <h2 id="recipe-name"></h2>
+        <p id="recipe-category"></p>
+        <p><a id="recipe-link" target="_blank">Link to Recipe</a></p>
+        <p id="recipe-time"></p>
+        <img id="recipe-image" alt="Recipe Image">
+        <div id="recipe-rating"></div>
+        <p id="recipe-comments"></p>
+        <button id="delete-recipe-btn">Delete Recipe</button>
+    </div>
+
+    <!--creating the form for users to input their new recipes-->
+    <form id="add-recipe-form">
+        <h2>Add New Recipe</h2>
+
+        <label for="recipe-name-input">Name:</label>
+        <input type="text" id="recipe-name-input" required>
+
+        <label for="recipe-category-input">Category:</label>
+        <select id="recipe-category-input"required>
+            <option value="">Pick the Category</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="appetizer">Appetizer</option>
+            <option value="dessert">Dessert</option>
+        </select>
+
+        <label for="recipe-link-input">Link:</label>
+        <input type="url" id="recipe-link-input" required>
+
+        <label for="recipe-time-input">Time (minutes):</label>
+        <input type="number" id="recipe-time-input" required>
+
+        <label for="recipe-image-input">Image URL:</label>
+        <input type="url" id="recipe-image-input" required>
+
+        <label for="recipe-rating-input">Rating (1-5):</label>
+        <input type="number" id="recipe-rating-input" min="1" max="5" required>
+
+        <label for="recipe-comments-input">Comments:</label>
+        <textarea id="recipe-comments-input"></textarea>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <script src="script.js"></script>
+        
+</body>
+</html>
