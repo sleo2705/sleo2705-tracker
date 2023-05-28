@@ -50,5 +50,43 @@ function displayRecipeCards(){
 });
 }
 
-//function to display the recipe cards
+//function to display the recipe details
+function displayRecipeDetails (index){
+    const recipe= recipes[index];
+    const recipeDetailsContainer= getElementById("recipe-details-container");
+    const recipeName= document.getElementById("recipe-name");
+    const recipeCategory= document.getElementById("recipe-category");
+    const recipeLink= document.getElementById("recipe-link");
+    const recipeTime= document.getElementById("recipe-time");
+    const recipeImage= document.getElementById("recipe-image");
+    const recipeRating= document.getElementById("recipe-rating");
+    const recipeComments= document.getElementById("recipe-comments");
+    const deleteRecipeBtn= document.getElementById("delete-recipe-btn");
+
+    //assigning values
+    recipeName.textContent= recipe.name;
+    recipeCategory.select= recipe.category;
+    recipeLink.href= recipe.link;
+    recipeTime.select=recipe.time;
+    recipeImage.src=recipe.image;
+    recipeRating.innerHTML="";
+    recipeComments.textContent=recipe.comments;
+    deleteRecipeBtn.dataset.index= index;
+
+    for (let i=1; i<=5; i++){
+        const star= document.createElement("span");
+        star.className= `star${recipe.rating == i ? " filled" : ""}`;
+        star.innerHTML= "&#9733;";
+        recipeRating.appendChild(star);
+    }
+
+    recipeDetailsContainer.style.display="block"
+}
+
+//function to hide the recipe details
+function hideRecipeDetails(){
+    const recipeDetailsContainer= document.getElementById("recipe-details-container");
+    recipeDetailsContainer.style.display="none";
+}
+
 
