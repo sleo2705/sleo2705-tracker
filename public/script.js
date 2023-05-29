@@ -89,4 +89,58 @@ function hideRecipeDetails(){
     recipeDetailsContainer.style.display="none";
 }
 
+//function to add a new recipe
+function addRecipe(event){
+    event.preventDefault();
 
+    const recipeNameInput= document.getElementById("recipe-name-input");
+    const recipeCategoryInput= document.getElementById("recipe-category-input");
+    const recipeLinkInput= document.getElementById("recipe-link-input");
+    const recipeTimeInput= document.getElementById("recipe-time-input");
+    const recipeImageInput= document.getElementById("recipe-image-input");
+    const recipeRatingInput= document.getElementById("recipe-rating-input");
+    const recipeCommentsInput= document.getElementById("recipe-comments-input");
+
+    const newRecipe= {
+        name: recipeNameInput.value,
+        category: recipeCategoryInput.value,
+        link: recipeLinkInput.value,
+        time: parseInt(recipeTimeInput.value),
+        image: recipeImageInput.value,
+        rating: parseInt(recipeRatingInput.value),
+        comments:recipeCommentsInput.value,
+        date: new Date().toLocaleDateString(), //current date
+        time: new Date().toLocaleDateString() //current time
+    };
+
+    //when the user submits new recipe to the existing recipe array
+    recipes.push(newRecipe);
+    displayRecipeCards();
+    recipeNameInput.value="";
+    recipeCategoryInput.value="";
+    recipeLinkInput.value="";
+    recipeTimeInput.value="";
+    recipeImageInput.value="";
+    recipeRatingInput.value="";
+    recipeCommentsInput.value="";
+}
+
+//function to delete existind recipes 
+function deleteRecipe(index){
+    recipes.splice(index,1);
+    displayRecipeCards();
+}
+
+//event listeners for the recipe cards
+document.getElementById("recipe-cards-container").addEventListener("click", function(event){
+    if(event.target.classList.contains("expand-btn")){
+        const index=event.target.parentElement.querySelector(".delete-btn").dataset.index;
+        displayRecipeDetails(index);
+    }
+});
+
+//event listeners for adding recipe with form submission
+document.getElementById("add-recipe-form").addEventListener("submit", addRecipe);
+
+//initial display of recipe cards
+displayRecipeCards();

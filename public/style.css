@@ -1,49 +1,13 @@
 h1{
     font-family:'Rubik One', sans-serif ;
-    font-size: 40pt;
+    font-size: 50px;
     color: white;
     text-align: center;
 }
 
 body{
     font-family: 'Raleway', sans-serif;
-    text-align: center;
     background-color: #98ac8e;
-    margin: 20px;
-}
-
-form{
-    margin: bottom 20px; ;
-}
-
-label, input, select, textarea{
-    display: block;
-    margin-bottom: 10px 0;
-}
-
-#recipeList{
-    display: grid;
-    grid-template-columns: repeat(autofit, minmax(300px,1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.recipe{
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-.recipe img{
-    width: 100%;
-    border-radius: 8px;
-}
-
-.recipe h3{
-    margin: 10px 0 5px;
-}
-
-.recipe p{
-    margin: 5px 0;
+    margin: 0;
+    padding: 20px;
 }
