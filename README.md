@@ -45,8 +45,4 @@ I ran into a number of difficulties while coding this recipe web app. I try to r
  - Reddit
 
 
-## Usage
-
-1. Clone the repository: 
-   git clone https://github.com/sleo2705/sleo2705-tracker/tree/main
-
+## file:///Users/sharisse/Desktop/VS%20web%20design/sleo2705-tracker/public/index.html?
