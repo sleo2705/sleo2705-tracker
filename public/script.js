@@ -7,7 +7,9 @@ let recipes= JSON.parse(localStorage.getItem('recipes')) || [
         link:  "https://pinchofyum.com/super-easy-one-pot-lasagna",
         image: "https://pinchofyum.com/cdn-cgi/image/width=680,height=99999,fit=scale-down/wp-content/uploads/One-Pot-Lasagna-2.jpg",
         rating: "5",
-        comments: "This recipe is delicious!"
+        comments: "This recipe is delicious!",
+        date: "2023-04-15",
+        time: "20:15"
     },
 
     {
@@ -17,7 +19,9 @@ let recipes= JSON.parse(localStorage.getItem('recipes')) || [
         link: "https://www.recipetineats.com/one-pot-chicken-alfredo-pasta/",
         image: "https://www.recipetineats.com/wp-content/uploads/2017/03/One-Pot-Chicken-Alfredo-2.jpg?resize=650,910",
         rating: "3",
-        comments: "This recipe is too creamy. Next time add lesser cream."
+        comments: "This recipe is too creamy. Next time add lesser cream.",
+        date: "2023-04-20",
+        time: "21:15"
     },
 
     {
@@ -27,7 +31,9 @@ let recipes= JSON.parse(localStorage.getItem('recipes')) || [
         link: "https://www.taste.com.au/recipes/quick-easy-apple-crumble/4f2e1fb8-2060-4e27-9833-a5ab7ab69717",
         image: "https://prettysimplesweet.com/wp-content/uploads/2017/09/AppleCrumble.jpg",
         rating: "4",
-        comments:"Super simple and quick dessert to whip up."
+        comments:"Super simple and quick dessert to whip up.",
+        date: "2023-03-10",
+        time: "20:33"
     },
 
     {
@@ -37,7 +43,9 @@ let recipes= JSON.parse(localStorage.getItem('recipes')) || [
         link: "https://iamafoodblog.com/hainanese-chicken-rice-best-easy-one-pot-chicken-rice-recipe/",
         image: "https://iamafoodblog.b-cdn.net/wp-content/uploads/2019/09/one-pot-hainanese-chicken-7115.jpg",
         rating: "3",
-        comments:"Yummy, would definitely make it again"
+        comments:"Yummy, would definitely make it again",
+        date: "2023-05-31",
+        time: "20:00"
     }
 ];
 
