@@ -1,9 +1,9 @@
 //setting up an array to hold the recipes
-let recipes=[
+let recipes= JSON.parse(localStorage.getItem('recipes')) || [
     {
         name: "Lasagna",
         category: "Dinner",
-        time: "45",
+        minutes: "45",
         link:  "https://pinchofyum.com/super-easy-one-pot-lasagna",
         image: "https://pinchofyum.com/cdn-cgi/image/width=680,height=99999,fit=scale-down/wp-content/uploads/One-Pot-Lasagna-2.jpg",
         rating: "5",
@@ -13,13 +13,38 @@ let recipes=[
     {
         name: "Alfredo Pasta",
         category: "Lunch",
-        time: "30",
+        minutes: "30",
         link: "https://www.recipetineats.com/one-pot-chicken-alfredo-pasta/",
         image: "https://www.recipetineats.com/wp-content/uploads/2017/03/One-Pot-Chicken-Alfredo-2.jpg?resize=650,910",
         rating: "3",
         comments: "This recipe is too creamy. Next time add lesser cream."
+    },
+
+    {
+        name: "Apple Crumble",
+        category: "Dessert",
+        minutes: "25",
+        link: "https://www.taste.com.au/recipes/quick-easy-apple-crumble/4f2e1fb8-2060-4e27-9833-a5ab7ab69717",
+        image: "https://prettysimplesweet.com/wp-content/uploads/2017/09/AppleCrumble.jpg",
+        rating: "4",
+        comments:"Super simple and quick dessert to whip up."
+    },
+
+    {
+        name: "Chicken Rice",
+        category: "Lunch",
+        minutes: "50",
+        link: "https://iamafoodblog.com/hainanese-chicken-rice-best-easy-one-pot-chicken-rice-recipe/",
+        image: "https://iamafoodblog.b-cdn.net/wp-content/uploads/2019/09/one-pot-hainanese-chicken-7115.jpg",
+        rating: "3",
+        comments:"Yummy, would definitely make it again"
     }
 ];
+
+//function to save recipes to local storage
+function saveRecipes(){
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+}
 
 //function to display the recipe cards
 function displayRecipeCards(){
@@ -40,7 +65,7 @@ function displayRecipeCards(){
             <span class="star${recipe.rating == 4 ? " filled" : ""}">&#9733;</span>
             <span class="star${recipe.rating == 5 ? " filled" : ""}">&#9733;</span>
         </div>
-        <p>${recipe.time} mins</p>
+        <p>${recipe.minutes} mins</p>
         <p>${recipe.category}</p>
         <button class="expand-btn">View Recipe</button>
         <button class="delete-btn" data-index="${index}">Delete</button>
@@ -53,21 +78,23 @@ function displayRecipeCards(){
 //function to display the recipe details
 function displayRecipeDetails (index){
     const recipe= recipes[index];
-    const recipeDetailsContainer= getElementById("recipe-details-container");
+    const recipeDetailsContainer= document.getElementById("recipe-details-container");
     const recipeName= document.getElementById("recipe-name");
     const recipeCategory= document.getElementById("recipe-category");
     const recipeLink= document.getElementById("recipe-link");
-    const recipeTime= document.getElementById("recipe-time");
+    const recipeMinutes= document.getElementById("recipe-minutes");
     const recipeImage= document.getElementById("recipe-image");
     const recipeRating= document.getElementById("recipe-rating");
     const recipeComments= document.getElementById("recipe-comments");
+    const recipeDate = document.getElementById("recipe-date"); 
+    const recipeTime = document.getElementById("recipe-time"); 
     const deleteRecipeBtn= document.getElementById("delete-recipe-btn");
 
     //assigning values
     recipeName.textContent= recipe.name;
     recipeCategory.select= recipe.category;
     recipeLink.href= recipe.link;
-    recipeTime.select=recipe.time;
+    recipeMinutes.select=recipe.minutes;
     recipeImage.src=recipe.image;
     recipeRating.innerHTML="";
     recipeComments.textContent=recipe.comments;
@@ -96,7 +123,7 @@ function addRecipe(event){
     const recipeNameInput= document.getElementById("recipe-name-input");
     const recipeCategoryInput= document.getElementById("recipe-category-input");
     const recipeLinkInput= document.getElementById("recipe-link-input");
-    const recipeTimeInput= document.getElementById("recipe-time-input");
+    const recipeMinutesInput= document.getElementById("recipe-minutes-input");
     const recipeImageInput= document.getElementById("recipe-image-input");
     const recipeRatingInput= document.getElementById("recipe-rating-input");
     const recipeCommentsInput= document.getElementById("recipe-comments-input");
@@ -105,7 +132,7 @@ function addRecipe(event){
         name: recipeNameInput.value,
         category: recipeCategoryInput.value,
         link: recipeLinkInput.value,
-        time: parseInt(recipeTimeInput.value),
+        minutes: parseInt(recipeMinutesInput.value),
         image: recipeImageInput.value,
         rating: parseInt(recipeRatingInput.value),
         comments:recipeCommentsInput.value,
@@ -119,7 +146,7 @@ function addRecipe(event){
     recipeNameInput.value="";
     recipeCategoryInput.value="";
     recipeLinkInput.value="";
-    recipeTimeInput.value="";
+    recipeMinutesInput.value="";
     recipeImageInput.value="";
     recipeRatingInput.value="";
     recipeCommentsInput.value="";
@@ -137,6 +164,13 @@ document.getElementById("recipe-cards-container").addEventListener("click", func
         const index=event.target.parentElement.querySelector(".delete-btn").dataset.index;
         displayRecipeDetails(index);
     }
+});
+
+//event lsitener for delete button in recipe details container
+document.getElementById("delete-recipe-btn").addEventListener("click", function(event){
+    const index= event.target.dataset.index;
+    deleteRecipe(index);
+    hideRecipeDetails();
 });
 
 //event listeners for adding recipe with form submission
